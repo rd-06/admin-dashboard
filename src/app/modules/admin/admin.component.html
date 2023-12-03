@@ -16,11 +16,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let post of searchText ?   filteredContacts : posts | paginate: {
+                <tr [class.checked]="post.checked" *ngFor="let post of searchText ?   filteredContacts : posts | paginate: {
             itemsPerPage: tableSize,
             currentPage: page,
             totalItems: count}; let i = index">
-                    <td><input type="checkbox" value="{{post.i}}" [(ngModel)]="post.checked"></td>
+                    <td><input type="checkbox" [class.checked-checkbox]="post.checked" value="{{post.i}}"
+                            [(ngModel)]="post.checked"></td>
                     <td data-label="Name">{{post.name}}</td>
                     <td data-label="Email">{{post.email}}</td>
                     <td data-label="Role">{{post.role}}</td>

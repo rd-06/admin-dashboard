@@ -119,10 +119,6 @@ input[type=text]:focus{
   box-shadow:0 0 8px 0 dodgerBlue;
 }
 
-input[type=checkbox]:focus{
-  border-color:dodgerBlue;
-  box-shadow:0 0 8px 0 dodgerBlue;
-}
 
 button{
   background: none;
@@ -207,4 +203,13 @@ button:hover{
 
 .blur{
   opacity: 0.1;
+}
+
+.checked{
+  background-color: #f8f8f8;
+}
+
+.checked-checkbox{
+  border-color:dodgerBlue;
+  box-shadow:0 0 8px 0 dodgerBlue;
 }
