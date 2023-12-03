@@ -1,1 +1,61 @@
-<p>admin works!</p>
+<table>
+    <caption>Statement Summary</caption>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let post of posts | paginate: {
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count}; let i = index">
+            <td data-label="Name">{{post.name}}</td>
+            <td data-label="Email">{{post.email}}</td>
+            <td data-label="Role">{{post.role}}</td>
+            <td data-label="Action">
+                <button (click)="editUser(i)">Edit</button>
+                <button (click)="deleteUser(i)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <pagination-controls previousLabel="prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+</div>
+
+<div class="edit-popup" *ngIf="edit">
+    <div>
+        <table>
+            <caption>Statement Summary</caption>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Name"><input type="text" name="" id="" [(ngModel)]='editName'></td>
+                    <td data-label="Email"><input type="email" name="" id="" [(ngModel)]='editEmail' required></td>
+                    <td data-label="Email">
+                        <select [(ngModel)]="editRole">
+                            <option value="member">member</option>
+                            <option value="admin">admin</option>
+                        </select>
+                    </td>
+                    <td data-label="Action">
+                        <button (click)="updateUser()">Save</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
