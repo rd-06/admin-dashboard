@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: "Matter-Medium";
+    src: url('assets/fonts/matter/Matter-Bold.ttf');
+  }
+  
+  @font-face {
+    font-family: "Matter-Bold";
+    src: url('assets/fonts/matter/Matter-Bold.ttf');
+  }
+  
+  @font-face {
+    font-family: "Matter-Light";
+    src: url('assets/fonts/matter/Matter-Light.ttf');
+  }
+  
+  @font-face {
+    font-family: "Matter-Regular";
+    src: url('assets/fonts/matter/Matter-Regular.ttf');
+  }
+  
+  @font-face {
+    font-family: "Matter-SemiBold";
+    src: url('assets/fonts/matter/Matter-SemiBold.ttf');
+  }
+
+
+  *{
+    font-family: 'Matter-Regular';
+  }
