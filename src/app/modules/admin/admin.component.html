@@ -2,7 +2,7 @@
 
     <div [class.blur]="edit">
         <input type="text" class="search-text" [(ngModel)]="searchText">
-        <button class="delete" type="button" (click)="deleteProducts()"><img src="/assets/bin.png" alt=""
+        <button class="delete" type="button" (click)="deleteUsers()"><img src="/assets/bin.png" alt=""
                 width="30"></button>
         <table>
             <thead>
@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr [class.checked]="post.checked" *ngFor="let post of searchText ?   filteredContacts : posts | paginate: {
+                <tr [class.checked]="post.checked" *ngFor="let post of searchText ?   filteredUsers : posts | paginate: {
             itemsPerPage: tableSize,
             currentPage: page,
             totalItems: count}; let i = index">
