@@ -13,14 +13,18 @@ table caption {
 }
 
 table tr {
-  background-color: #f8f8f8;
+  // background-color: #f8f8f8;
   border: 1px solid #ddd;
-  padding: .35em;
+  padding: 1em;
+}
+
+table tr:hover{
+  background-color: #f8f8f8;
 }
 
 table th,
 table td {
-  padding: .625em;
+  padding: 1em;
   text-align: center;
 }
 
@@ -96,4 +100,56 @@ table th {
 body {
   font-family: "Open Sans", sans-serif;
   line-height: 1.25;
+}
+
+
+input[type=text]{
+  width: 25%;
+  border: 1px solid #ddd;
+  border-radius:4px;
+  margin:8px 0;
+  outline:none;
+  padding:8px;
+  box-sizing:border-box;
+  transition:.3s;
+}
+
+input[type=text]:focus{
+  border-color:dodgerBlue;
+  box-shadow:0 0 8px 0 dodgerBlue;
+}
+
+input[type=checkbox]:focus{
+  border-color:dodgerBlue;
+  box-shadow:0 0 8px 0 dodgerBlue;
+}
+
+button{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search-text{
+  padding: 1rem;
+}
+
+.delete{
+  float: right;
+  margin-right: 1rem;
+  transition:.3s;
+}
+
+.delete:hover{
+  border-color:rgb(255, 30, 30);
+  box-shadow:0 0 8px 0 rgb(255, 30, 30);
+}
+
+.container{
+  padding: 1rem;
+}
+
+pagination-controls{
+  text-align: center;
+  padding: 2rem !important;
 }

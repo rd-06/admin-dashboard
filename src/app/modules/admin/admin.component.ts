@@ -17,9 +17,9 @@ export class AdminComponent {
   editEmail: string = '';
   editRole: string = '';
   editUserID: number = 0;
+  searchText: any;
 
   constructor(private userService: UserService) {
-
   }
 
   ngOnInit(): void {
@@ -29,8 +29,11 @@ export class AdminComponent {
   postList(): void {
     this.userService.getUsers().subscribe({
       next: (response) => {
-        console.log(response);
+        // console.log(response);
         this.posts = response;
+        this.posts.forEach((obj: any) => {
+          obj.checked = false; // You can set it to true if needed
+        });
       },
       error: (error) => {
         alert('Please ensure you have a stable internet connection 📶');
@@ -38,6 +41,51 @@ export class AdminComponent {
       }
     })
   }
+
+  get filteredContacts() {
+    return this.posts.filter((post: any) => {
+      return (
+        post.name
+          .toLowerCase()
+          .includes(this.searchText.toLowerCase()) ||
+        post.email.toLocaleString()
+          .toLowerCase()
+          .includes(this.searchText.toLowerCase()) ||
+        post.role
+          .toLowerCase()
+          .includes(this.searchText.toLowerCase())
+      );
+    });
+  }
+
+
+  checkAllCheckBox(ev: any) {
+    if (this.posts) {
+      this.posts.forEach((x: any) => x.checked = ev.target.checked)
+    }
+  }
+
+  isAllCheckBoxChecked() {
+    if (this.posts) {
+      return this.posts.every((p: any) => p.checked);
+    }
+  }
+
+  deleteProducts(): void {
+    const selectedUsers = this.posts.filter((product: any) => product.checked).map((p: any) => p.id);
+
+    console.log(selectedUsers);
+
+    if (selectedUsers && selectedUsers.length > 0) {
+
+
+      this.posts = this.posts.filter((obj: any) => !selectedUsers.includes(obj.id));
+
+    } else {
+
+    }
+  }
+
 
   onTableDataChange(event: any) {
     this.page = event;
