@@ -1,44 +1,47 @@
 <div class="container">
 
-    <input type="text" class="search-text" [(ngModel)]="searchText">
-    <button class="delete" type="button" (click)="deleteProducts()"><img src="/assets/bin.png" alt=""
-            width="30"></button>
-    <table>
-        <thead>
-            <tr>
-                <th><input type="checkbox" [checked]="isAllCheckBoxChecked()" (change)="checkAllCheckBox($event)"></th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let post of searchText ?   filteredContacts : posts | paginate: {
+    <div [class.blur]="edit">
+        <input type="text" class="search-text" [(ngModel)]="searchText">
+        <button class="delete" type="button" (click)="deleteProducts()"><img src="/assets/bin.png" alt=""
+                width="30"></button>
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" [checked]="isAllCheckBoxChecked()" (change)="checkAllCheckBox($event)">
+                    </th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let post of searchText ?   filteredContacts : posts | paginate: {
             itemsPerPage: tableSize,
             currentPage: page,
             totalItems: count}; let i = index">
-                <td><input type="checkbox" value="{{post.i}}" [(ngModel)]="post.checked"></td>
-                <td data-label="Name">{{post.name}}</td>
-                <td data-label="Email">{{post.email}}</td>
-                <td data-label="Role">{{post.role}}</td>
-                <td data-label="Action">
-                    <button (click)="editUser(i)"><img src="/assets/editing.png" alt="" width="20"></button>
-                    <button (click)="deleteUser(i)"><img src="/assets/remove.png" alt="" width="20"></button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    <td><input type="checkbox" value="{{post.i}}" [(ngModel)]="post.checked"></td>
+                    <td data-label="Name">{{post.name}}</td>
+                    <td data-label="Email">{{post.email}}</td>
+                    <td data-label="Role">{{post.role}}</td>
+                    <td data-label="Action">
+                        <button (click)="editUser(i)"><img src="/assets/editing.png" alt="" width="20"></button>
+                        <button (click)="deleteUser(i)"><img src="/assets/remove.png" alt="" width="20"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-    <div>
-        <pagination-controls previousLabel="prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
-        </pagination-controls>
+        <div>
+            <pagination-controls previousLabel="prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+            </pagination-controls>
+        </div>
+
     </div>
 
-    <div class="edit-popup" *ngIf="edit">
-        <div>
+    <div class="edit-popup-container" *ngIf="edit">
+        <div class="edit-popup">
             <table>
-                <caption>Statement Summary</caption>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -58,7 +61,7 @@
                             </select>
                         </td>
                         <td data-label="Action">
-                            <button (click)="updateUser()">Save</button>
+                            <button (click)="updateUser()"><img src="/assets/save-file.png" alt="" width="20"></button>
                         </td>
                     </tr>
                 </tbody>
