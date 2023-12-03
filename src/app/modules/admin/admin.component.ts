@@ -42,7 +42,7 @@ export class AdminComponent {
     })
   }
 
-  get filteredContacts() {
+  get filteredUsers() {
     return this.posts.filter((post: any) => {
       return (
         post.name
@@ -61,6 +61,7 @@ export class AdminComponent {
 
   checkAllCheckBox(ev: any) {
     if (this.posts) {
+      console.log(ev);
       this.posts.forEach((x: any) => x.checked = ev.target.checked)
     }
   }
@@ -71,7 +72,7 @@ export class AdminComponent {
     }
   }
 
-  deleteProducts(): void {
+  deleteUsers(): void {
     const selectedUsers = this.posts.filter((product: any) => product.checked).map((p: any) => p.id);
 
     console.log(selectedUsers);
