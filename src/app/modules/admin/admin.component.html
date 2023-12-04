@@ -26,8 +26,8 @@
                     <td data-label="Email">{{post.email}}</td>
                     <td data-label="Role">{{post.role}}</td>
                     <td data-label="Action">
-                        <button (click)="editUser(i)"><img src="/assets/editing.png" alt="" width="20"></button>
-                        <button (click)="deleteUser(i)"><img src="/assets/remove.png" alt="" width="20"></button>
+                        <button (click)="editUser(post.id)"><img src="/assets/editing.png" alt="" width="20"></button>
+                        <button (click)="deleteUser(post.id)"><img src="/assets/remove.png" alt="" width="20"></button>
                     </td>
                 </tr>
             </tbody>

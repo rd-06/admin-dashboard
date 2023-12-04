@@ -94,8 +94,14 @@ export class AdminComponent {
   }
 
   deleteUser(id: number) {
-    this.posts.splice(id, 1);
-    console.log('deleteUser');
+    // console.log(id, this.page);
+    // this.posts.splice(id, 1);
+    // console.log('deleteUser');
+    const indexToDelete = this.posts.findIndex((obj: any) => obj.id === id);
+
+    if (indexToDelete !== -1) {
+      this.posts.splice(indexToDelete, 1);
+    }
   }
 
   // onTableSizeChange(event: any): void {
@@ -106,10 +112,11 @@ export class AdminComponent {
 
   editUser(id: number) {
     this.edit = true;
-    this.editName = this.posts[id].name;
-    this.editEmail = this.posts[id].email;
-    this.editRole = this.posts[id].role;
-    this.editUserID = id;
+    const indexToEdit = this.posts.findIndex((obj: any) => obj.id === id);
+    this.editName = this.posts[indexToEdit].name;
+    this.editEmail = this.posts[indexToEdit].email;
+    this.editRole = this.posts[indexToEdit].role;
+    this.editUserID = indexToEdit;
   }
 
   updateUser() {
